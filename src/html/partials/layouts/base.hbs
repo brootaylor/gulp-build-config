@@ -1,0 +1,60 @@
+<!doctype html>
+<html {{#ifEquals country "es"}}lang="es"{{else}}lang="en"{{/ifEquals}} {{#if country}}class="{{country}}"{{/if}}>
+	<head>
+		{{!-- Main meta tags pulled in here... --}}
+		{{> includes/core/meta }}
+
+		{{#ifEquals pageClass "welcome"}}
+		<title>BWT | {{ title }}</title>
+		{{else}}
+		<title>{{ title }} | BWT</title>
+		{{/ifEquals}}
+		{{#if description}}<meta name="description" content="{{ description }}">{{/if}}
+
+		{{!-- Main styles pulled in here... --}}
+		{{> includes/core/styles }}
+		{{#> styles-block}}
+			{{!-- Custom styles per page can be added if needed. --}}
+		{{/styles-block}}
+
+		{{!-- Favicons and Progressive Web App manifest --}}
+		{{> includes/core/favicon-pwa }}
+	</head>
+	<body {{#if pageClass}} class="{{pageClass}} {{pageNav}}"{{/if}}>
+
+		<header>
+			{{#> header-block}}
+				{{!--
+					The `includes/core/header` partial is the default content,
+					but can be overridden.
+				--}}
+				{{> includes/core/header }}
+			{{/header-block}}
+		</header>
+
+		<main>
+			{{#> main-block}}
+				{{!-- Main content goes here. --}}
+			{{/main-block}}
+		</main>
+
+		<footer>
+			{{#> footer-block}}
+				{{!--
+					The `includes/core/footer` partial is the default content,
+					but can be overridden.
+				--}}
+				{{> includes/core/footer }}
+			{{/footer-block}}
+		</footer>
+
+		{{!-- Main JS scripts pulled in here... --}}
+		{{> includes/core/scripts }}
+		{{#> scripts-block}}
+			{{!-- Custom scripts per page can be added if needed. --}}
+		{{/scripts-block}}
+
+		{{!-- Helps offline content experience... --}}
+		{{> includes/core/service-worker }}
+	</body>
+</html>
