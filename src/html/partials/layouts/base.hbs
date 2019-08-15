@@ -1,14 +1,10 @@
 <!doctype html>
-<html {{#ifEquals country "es"}}lang="es"{{else}}lang="en"{{/ifEquals}} {{#if country}}class="{{country}}"{{/if}}>
+<html {{#if country}}class="{{country}}"{{/if}} lang="en-gb">
 	<head>
 		{{!-- Main meta tags pulled in here... --}}
 		{{> includes/core/meta }}
 
-		{{#ifEquals pageClass "welcome"}}
-		<title>BWT | {{ title }}</title>
-		{{else}}
 		<title>{{ title }} | BWT</title>
-		{{/ifEquals}}
 		{{#if description}}<meta name="description" content="{{ description }}">{{/if}}
 
 		{{!-- Main styles pulled in here... --}}
@@ -20,7 +16,7 @@
 		{{!-- Favicons and Progressive Web App manifest --}}
 		{{> includes/core/favicon-pwa }}
 	</head>
-	<body {{#if pageClass}} class="{{pageClass}} {{pageNav}}"{{/if}}>
+	<body {{#if pageClass}}class="{{pageClass}}{{#if pageNav}} {{pageNav}}{{/if}}"{{/if}}>
 
 		<header>
 			{{#> header-block}}

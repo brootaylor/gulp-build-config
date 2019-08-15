@@ -1,0 +1,10 @@
+Options FollowSymLinks
+DirectoryIndex index.html
+RewriteEngine On
+
+RewriteRule ^$ /index.html [L]
+
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^([^\.]+)$ $1.html [NC,L]
+

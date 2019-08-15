@@ -1,11 +1,11 @@
 <div class="nav-holder">
 	<nav class="menu">
 		<ul class="menu__list">
-			<li class="menu__item{{#ifEquals pageNav "who-active"}} menu__item--current{{/ifEquals}}"><a href="/" class="menu__link">Link 1</a></li>
-			<li class="menu__item{{#ifEquals pageNav "what-active"}} menu__item--current{{/ifEquals}}"><a href="/" class="menu__link">Link 2</a></li>
-			<li class="menu__item logo"><a href="/"><img class="logo" src="/assets/images/logo.png" alt=""></a></li>
-			<li class="menu__item{{#ifEquals pageNav "who-with-active"}} menu__item--current{{/ifEquals}}"><a href="/" class="menu__link">Link 3</a></li>
-			<li class="menu__item{{#ifEquals pageNav "contact-active"}} menu__item--current{{/ifEquals}}"><a href="/" class="menu__link">Link 4</a></li>
+			<li class="menu__item{{#ifEquals pageNav "home-nav"}} menu__item--current{{/ifEquals}}"><a href="/" class="menu__link">Home</a></li>
+			<li class="menu__item{{#ifEquals pageNav "about-nav"}} menu__item--current{{/ifEquals}}"><a href="/about.html" class="menu__link">About</a></li>
+			<li class="menu__item logo"><a href="/"><img src="/assets/images/logo.svg" alt="Logo"></a></li>
+			<li class="menu__item{{#ifEquals pageNav "news-nav"}} menu__item--current{{/ifEquals}}"><a href="/news.html" class="menu__link">News</a></li>
+			<li class="menu__item{{#ifEquals pageNav "contact-nav"}} menu__item--current{{/ifEquals}}"><a href="/contact.html" class="menu__link">Contact</a></li>
 		</ul>
 	</nav>
 </div>

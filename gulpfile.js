@@ -69,14 +69,14 @@ const paths = {
 // --------------------------------------------------------
 
 // Fire up local server...
-function serve(cb) {
+const serve = function(cb) {
 	browserSync.init({
 		server: './dist'
 	}, cb);
 }
 
 // Clean / delete the 'dist' directory...
-function cleanDist() {
+const cleanDist = function() {
 	return del([
 		// [Option A]: Delete the entire 'dist' directory....
 		root.dist,
@@ -97,7 +97,7 @@ function cleanDist() {
 }
 
 // Critical CSS extraction...
-function criticalCss() {
+const criticalCss = function() {
 	return gulp
 		.src(`${paths.html.dist}**/*.html`)
 		.pipe(critical({
@@ -114,7 +114,7 @@ function criticalCss() {
 }
 
 // Styles...
-function styles() {
+const styles = function() {
 	return gulp.src(`${paths.styles.src}**/*.scss`)
 		.pipe(sass().on('error', sass.logError))
 		.pipe(postcss([autoprefixer()]))
@@ -123,7 +123,7 @@ function styles() {
 }
 
 // Styles minify...
-function stylesMin() {
+const stylesMin = function() {
 	return gulp.src(`${paths.styles.src}**/*.scss`)
 		.pipe(sass().on('error', sass.logError))
 		.pipe(postcss([autoprefixer()]))
@@ -132,7 +132,7 @@ function stylesMin() {
 }
 
 // Concatenate styles...
-function stylesConcat() {
+const stylesConcat = function() {
 	return gulp.src([
 		`${paths.styles.dist}styles.css`,
 		`${root.src}assets/css/vendor/vendor.css`
@@ -142,7 +142,7 @@ function stylesConcat() {
 }
 
 // Scripts...
-function scripts() {
+const scripts = function() {
 	return gulp.src([
 		// [Option A]: Grab all script files...
 		//`${paths.scripts.src}**/*.js`,
@@ -161,7 +161,7 @@ function scripts() {
 }
 
 // Scripts minify...
-function scriptsMin() {
+const scriptsMin = function() {
 	return gulp.src([
 		`${paths.scripts.dist}**/*.js`, // All the custom JS
 		`!${paths.scripts.vendor.dist}**/*.js` // Ignore the vendor JS
@@ -171,7 +171,7 @@ function scriptsMin() {
 }
 
 // Copy JS Vendor files...
-function scriptsVendor() {
+const scriptsVendor = function() {
 	return gulp.src([
 		// [Option A]: Grab all vendor script files...
 		`${paths.scripts.vendor.src}**/*.js`
@@ -186,7 +186,7 @@ function scriptsVendor() {
 }
 
 // Compile Handlebars templates into HTML...
-function html() {
+const html = function() {
 	return gulp.src([
 			`${paths.html.src}**/*.hbs`,
 			`!${paths.html.src}partials/**/*.hbs`,
@@ -214,14 +214,14 @@ function html() {
 }
 
 // HTML minify...
-function htmlMin() {
+const htmlMin = function() {
 	return gulp.src(`${paths.html.dist}**/*.html`)
 		.pipe(htmlmin({collapseWhitespace: true}))
 		.pipe(gulp.dest(paths.html.dist));
 }
 
 // Optimise images...
-function images() {
+const images = function() {
 	return gulp.src(`${paths.images.src}**/*`)
 		.pipe(newer(paths.images.dist)) // Making sure that only newer / updated images are outputted
 		.pipe(imagemin([
@@ -239,18 +239,19 @@ function images() {
 }
 
 // Copy various files...
-function copyMisc() {
+const copyMisc = function() {
 	return gulp.src([
 		`${root.src}assets/ico/*`,
 		`${root.src}*.xml`, // All 'xml' files in the root directory - ie. sitemap.xml
 		`${root.src}manifest.json`,
-		`${root.src}serviceworker.js` // All service worker files in the root directory
+		`${root.src}serviceworker.js`, // All service worker files in the root directory
+		`${root.src}.htaccess`
 	], { base: root.src })
 		.pipe(gulp.dest(root.dist));
 }
 
 // 'Watch' tasks...
-function watch() {
+const watch = function() {
 	serve(); // Starts up a local server instance
 	gulp.watch(paths.styles.src, styles); // Watching changes to SCSS
 	gulp.watch(paths.scripts.src, scripts); // Watching changes to JS
