@@ -1,15 +1,18 @@
 {
   "name": "gulp-build-config",
   "version": "2019.0.1",
-  "description": "A build system using Gulp",
+  "description": "A build system using Gulp.",
   "keywords": [
     "gulp",
     "build",
     "serviceworker",
     "pwa"
   ],
-  "repository": "https://bitbucket.org/aviosgroup/avios-group-sites",
-  "homepage": "https://aviosgroup.com/",
+  "repository": "https://github.com/brootaylor/Grunt-Build-Config",
+  "homepage": "https://github.com/brootaylor/Grunt-Build-Config#readme",
+  "bugs": {
+    "url": "https://github.com/brootaylor/Grunt-Build-Config/issues"
+  },
   "author": "Bruce Taylor",
   "license": "SEE LICENSE IN LICENSE",
   "scripts": {
