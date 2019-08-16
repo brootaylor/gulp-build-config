@@ -6,10 +6,17 @@
 	description="Description."
 }}
 
-	{{#*inline "main-block"}}
+		{{#*inline "hero-block"}}
+			{{> includes/hero
+				hero-src="assets/images/hero.png"
+				hero-alt="Hero 1 alt title"
+			}}
+		{{/inline}}
+
+		{{#*inline "main-block"}}
 
 			<h1>{{title}}</h1>
 
-	{{/inline}}
+		{{/inline}}
 
 {{/layouts/base}}
