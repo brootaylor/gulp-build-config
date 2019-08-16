@@ -1,5 +1,32 @@
-// Placeholder SCSS file
+// Variables
+$background-colour: #fff;
+$font-family: Arial, Helvetica, sans-serif;
+$font-colour: rgb(27, 22, 22);
+$font-size: 1rem;
+$link-colour: rgb(18, 56, 182);
 
-.element {
-    display: flex;
+// Styles
+body {
+	font-family: $font-family;
+	font-size: $font-size;
+	color: $font-colour;
+	background: $background-colour;
+}
+
+.test {
+	display: flex;
+}
+
+a {
+	color: $link-colour;
+
+	&:hover {
+		color: lighten($link-colour, 20%);
+		text-decoration: none;
+	}
+}
+
+img {
+	width: auto;
+	max-width: 100%;
 }

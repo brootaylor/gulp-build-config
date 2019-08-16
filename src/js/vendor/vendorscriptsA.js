@@ -1,0 +1,1 @@
+console.log('Vendor A scripts are firing!');

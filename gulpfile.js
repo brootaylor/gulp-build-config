@@ -274,7 +274,7 @@ const buildSet = gulp.series(
 
 		// Parallel tasks...
 		gulp.parallel(
-			//scriptsVendor,
+			scriptsVendor,
 			images,
 			copyMisc
 		)
@@ -296,7 +296,7 @@ const publishSet = gulp.series(
 
 		// Parallel tasks...
 		gulp.parallel(
-			//scriptsVendor,
+			scriptsVendor,
 			images,
 			copyMisc
 		)
