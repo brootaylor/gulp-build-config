@@ -145,13 +145,13 @@ const stylesConcat = function() {
 const scripts = function() {
 	return gulp.src([
 		// [Option A]: Grab all script files...
-		//`${paths.scripts.src}**/*.js`,
+		`${paths.scripts.src}**/*.js`,
 
 		// [Option B]: Declare files seperately to define concatenation order...
-		`${paths.scripts.src}main.js`,
-		`${paths.scripts.src}contentToggle.js`,
-		`${paths.scripts.src}yearDateStamp.js`,
-		// `!${paths.scripts.vendor.src}` // Ignore these vendor script files => Uncomment this if using "Option A"
+		// `${paths.scripts.src}app.js`,
+		// `${paths.scripts.src}contentToggle.js`,
+		// `${paths.scripts.src}yearDateStamp.js`,
+		`!${paths.scripts.vendor.src}**/*.js` // Ignore these vendor script files => Uncomment this if using "Option A"
 	], { sourcemaps: true })
 		.pipe(babel({
 			presets: ['@babel/env']
