@@ -97,6 +97,11 @@ const cleanDist = function() {
 	])
 }
 
+// Getting the data...
+const getData = function() {
+	return JSON.parse(fs.readFileSync(`${root.src}data.json`));
+}
+
 // Critical CSS extraction...
 const criticalCss = function() {
 	return gulp
@@ -192,6 +197,7 @@ const html = function() {
 		`${paths.html.src}**/*.njk`,
 		`!${paths.html.src}partials/**/*.njk`,
 	])
+		.pipe(data(getData))
 		.pipe(nunjucksRender({
 			path: [`${paths.html.src}partials`]
 		}))
