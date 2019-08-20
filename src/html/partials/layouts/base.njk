@@ -1,0 +1,45 @@
+<!doctype html>
+<html {% if country %}class="{{ country }}"{% endif %} lang="en-gb">
+	<head>
+		{# Main meta tags pulled in here... #}
+		{% include "includes/core/meta.njk" %}
+		<title>{{ title }} | BWT</title>
+		{% if description %}<meta name="description" content="{{ description }}">{% endif %}
+
+		{# Main styles pulled in here... #}
+		{% include "includes/core/styles.njk" %}
+		{% block styles %}
+			{# Extra inline styles can be pulled in here #}
+		{% endblock %}
+
+		{# Favicons and Progressive Web App manifest #}
+		{% include "includes/core/favicon-pwa.njk" %}
+	</head>
+	<body {% if pageClass %}class="{{ pageClass }}{% if pageNav %} {{ pageNav }}{% endif %}"{% endif %}>
+
+		{% block header %}
+			{# Header and navigation. #}
+		{% endblock %}
+
+		<main>
+			{% block hero %}
+				{# Hero content goes here. #}
+			{% endblock %}
+			{% block main %}
+				{# Main content goes here. #}
+			{% endblock %}
+		</main>
+
+		{# The `includes/core/footer` partial is the default content, but can be overridden. #}
+		{% include "includes/core/footer.njk" %}
+
+		{# Main JS scripts pulled in here... #}
+		{% include "includes/core/scripts.njk" %}
+		{% block scripts %}
+			{# Custom scripts per page can be added if needed. #}
+		{% endblock %}
+
+		{# Helps offline content experience... #}
+		{% include "includes/core/service-worker.njk" %}
+	</body>
+</html>

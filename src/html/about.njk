@@ -1,0 +1,10 @@
+{% extends "layouts/base.njk" %}
+{% import "macros/header.njk" as header %}
+
+{% block header %}
+	{{ header.renderHeader('about') }}
+{% endblock %}
+
+{% block main %}
+	<h1>About page</h1>
+{% endblock %}

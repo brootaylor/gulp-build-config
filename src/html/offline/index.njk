@@ -1,0 +1,10 @@
+{% extends "layouts/base.njk" %}
+{% import "macros/header.njk" as header %}
+
+{% block header %}
+	{{ header.renderHeader('index') }}
+{% endblock %}
+
+{% block main %}
+	<h1>You're offline</h1>
+{% endblock %}

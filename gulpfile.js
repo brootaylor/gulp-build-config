@@ -6,17 +6,18 @@
 const gulp = require('gulp'),
 	  del = require('del'),
 	  log = require('fancy-log'),
-	  handlebars = require('gulp-compile-handlebars'),
+	  nunjucksRender = require('gulp-nunjucks-render'),
+	  data = require('gulp-data'),
 	  newer = require('gulp-newer'),
 	  rename = require('gulp-rename'),
 	  browserSync = require('browser-sync').create(),
-	  shell = require('gulp-shell');
+	  shell = require('gulp-shell'),
+	  fs = require("fs");
 
 // CSS...
 const sass = require('gulp-sass'),
 	  postcss = require('gulp-postcss'),
 	  autoprefixer = require('autoprefixer'),
-	  cssnano = require('cssnano'),
 	  critical = require('critical').stream;
 
 // JS...
@@ -185,31 +186,15 @@ const scriptsVendor = function() {
 		.pipe(gulp.dest(paths.scripts.vendor.dist));
 }
 
-// Compile Handlebars templates into HTML...
+// Compile Nunjucks templates into HTML...
 const html = function() {
 	return gulp.src([
-			`${paths.html.src}**/*.hbs`,
-			`!${paths.html.src}partials/**/*.hbs`,
+		`${paths.html.src}**/*.njk`,
+		`!${paths.html.src}partials/**/*.njk`,
 	])
-		.pipe(handlebars({}, {
-		  ignorePartials: true,
-		  batch: [`${paths.html.src}partials`],
-		  helpers : {
-			ifEquals: function (v1, v2, options) {
-				if (v1 === v2) {
-					return options.fn(this);
-				}
-				return options.inverse(this);
-			},
-			ifOneOf: function (v1, v2, v3, options) {
-				if (!(v1 || v2 || v3)) {
-					return options.fn(this);
-				}
-				return options.inverse(this);
-			}
-		}
+		.pipe(nunjucksRender({
+			path: [`${paths.html.src}partials`]
 		}))
-		.pipe(rename({extname: '.html'}))
 		.pipe(gulp.dest(paths.html.dist));
 }
 
