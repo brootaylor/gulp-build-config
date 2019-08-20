@@ -1,6 +1,6 @@
 # Gulp Build Config
 
-A build system using Gulp. With a few other sneaky buildly things chucked in. So yes, not just Gulp 🙂
+A build system using Gulp. With a few other sneaky buildly things chucked in. So yes, not just Gulp. 🙂
 
 ## What's in it
 
@@ -16,7 +16,7 @@ A build system using Gulp. With a few other sneaky buildly things chucked in. So
         - `lighthouse https://blah.com --budget-path=budget.json --view`
         - Here a [Performance Budget Calculator](https://perf-budget-calculator.firebaseapp.com/) to help determine and then set a performance budget
         - More on the [performance budget implementation](https://bitsofco.de/your-first-performance-budget-with-lighthouse/)
-* **Handlebars templates** - A basic template set up to minimise the amount of manual code duplication and help the updating and new page creation process.
+* **Nunjucks templates** - A basic template set up to minimise the amount of manual code duplication and help the updating and new page creation process.
 * **PWA features** - The following [Progressive Web App's (PWA)](https://developer.mozilla.org/en-US/docs/Web/Apps/Progressive) features have been added...
     - [Service Workers](https://developer.mozilla.org/en-US/docs/Web/API/Service_Worker_API) have been added to render specified content, (specific to the region), as well as content that's already been visited - even when a user is offline. An added benefit is that the website will appear to load / perform faster.
     - [Web App Manifest](https://developer.mozilla.org/en-US/docs/Web/Manifest) to tell the browser about the web application and how it should behave when 'installed' on the user's mobile device or desktop.
