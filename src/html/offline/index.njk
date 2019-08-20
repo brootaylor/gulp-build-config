@@ -1,3 +1,5 @@
+{% set pageClass = "offline" %}
+{% set title = title.offline %}
 {% extends "layouts/base.njk" %}
 {% import "macros/header.njk" as header %}
 
@@ -6,5 +8,5 @@
 {% endblock %}
 
 {% block main %}
-	<h1>{{ title.offline }}</h1>
+	<h1>{{ title }}</h1>
 {% endblock %}

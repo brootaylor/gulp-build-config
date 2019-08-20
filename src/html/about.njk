@@ -1,3 +1,5 @@
+{% set pageClass = "about" %}
+{% set title = title.about %}
 {% extends "layouts/base.njk" %}
 {% import "macros/header.njk" as header %}
 
@@ -6,5 +8,5 @@
 {% endblock %}
 
 {% block main %}
-	<h1>{{ title.about }}</h1>
+	<h1>{{ title }}</h1>
 {% endblock %}

@@ -9,7 +9,6 @@ const gulp = require('gulp'),
 	  nunjucksRender = require('gulp-nunjucks-render'),
 	  data = require('gulp-data'),
 	  newer = require('gulp-newer'),
-	  rename = require('gulp-rename'),
 	  browserSync = require('browser-sync').create(),
 	  shell = require('gulp-shell'),
 	  fs = require("fs");
@@ -61,6 +60,9 @@ const paths = {
 	html: {
 		src: `${root.src}html/`,
 		dist: `${root.dist}`
+	},
+	data: {
+		src: `${root.src}data/`
 	}
 };
 
@@ -98,8 +100,8 @@ const cleanDist = function() {
 }
 
 // Getting the data...
-const getData = function() {
-	return JSON.parse(fs.readFileSync(`${root.src}data.json`));
+const getJsonData = function(file) {
+	return JSON.parse(fs.readFileSync(`${paths.data.src}data.json`));
 }
 
 // Critical CSS extraction...
@@ -197,7 +199,7 @@ const html = function() {
 		`${paths.html.src}**/*.njk`,
 		`!${paths.html.src}partials/**/*.njk`,
 	])
-		.pipe(data(getData))
+		.pipe(data(getJsonData))
 		.pipe(nunjucksRender({
 			path: [`${paths.html.src}partials`]
 		}))
@@ -244,6 +246,7 @@ const copyMisc = function() {
 // 'Watch' tasks...
 const watch = function() {
 	serve(); // Starts up a local server instance
+	gulp.watch(paths.data.src, getJsonData); // Watching changes to Data
 	gulp.watch(paths.styles.src, styles); // Watching changes to SCSS
 	gulp.watch(paths.scripts.src, scripts); // Watching changes to JS
 	gulp.watch(paths.images.src, images); // Watching changes to Images

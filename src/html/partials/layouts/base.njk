@@ -15,7 +15,7 @@
 		{# Favicons and Progressive Web App manifest #}
 		{% include "includes/core/favicon-pwa.njk" %}
 	</head>
-	<body {% if pageClass %}class="{{ pageClass }}{% if pageNav %} {{ pageNav }}{% endif %}"{% endif %}>
+	<body {% if pageClass %}class="{{ pageClass }}"{% endif %}>
 
 		{% block header %}
 			{# Header and navigation. #}
